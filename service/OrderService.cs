@@ -1,9 +1,9 @@
 using Crm.Entities;
 namespace Crm.Services;
 
-public sealed class OrderService
+public sealed class OrderService : OrderServiceBase
 {
-    public Order CreateOrder(OrderInfo orderInfo)
+    public override Order CreateOrder(OrderInfo orderInfo)
     {
         Order newOrder = new Order(12, 57)
         {
@@ -17,4 +17,14 @@ public sealed class OrderService
 
         return newOrder;
     }
+}
+
+public interface IOrderService
+{
+    Order CreateOrder(OrderInfo orderInfo);
+}
+
+public abstract class OrderServiceBase : IOrderService
+{
+    public abstract Order CreateOrder(OrderInfo orderInfo);
 }

@@ -2,9 +2,10 @@ using Crm.Entities;
 using Crm.Validate;
 namespace Crm.Services;
 
-
-public sealed class ClientService
+public sealed class ClientService : BaseService, IClientService
 {
+    private List<Client> clients = new();
+
     public Client CreateClient(ClientInfo clientInfo)
 
     {
@@ -23,7 +24,22 @@ public sealed class ClientService
             return null;
         }
 
+        clients.Add(newClient);
+
 
         return newClient;
+    }
+}
+
+public interface IClientService
+{
+    Client CreateClient(ClientInfo clientInfo);
+}
+
+public abstract class BaseService 
+{
+    protected bool ValidateClient(Client client)
+    {
+        return true;
     }
 }
