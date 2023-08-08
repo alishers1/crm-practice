@@ -11,11 +11,11 @@ public sealed class Client
 
     public string? FirstName { 
         get => _firstName ?? string.Empty; 
-        init => _firstName = value is { Length: > 0} ? value : throw new ArgumentOutOfRangeException(nameof(value)); 
+        set => _firstName = value is { Length: > 0} ? value : throw new ArgumentOutOfRangeException(nameof(value)); 
     }
     public string? LastName {
-        get => _firstName ?? string.Empty; 
-        init => _firstName = value is { Length: > 0} ? value : throw new ArgumentOutOfRangeException(nameof(value));
+        get => _lastName ?? string.Empty; 
+        set => _lastName = value is { Length: > 0} ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
     public string? MiddleName { get; init; }
     public short? Age {
@@ -28,12 +28,12 @@ public sealed class Client
         init => _gender = value == "Male" || value == "Female" ? value : throw new ArgumentException("Gender must be either 'Male' or 'Female'.");
     }
 
-    public Client(string firstName, string lastName, short age)
-    {
-        FirstName = firstName;
-        LastName = lastName;
-        Age = age;
-    }
+    // public Client(string firstName, string lastName, short age)
+    // {
+    //     FirstName = firstName;
+    //     LastName = lastName;
+    //     Age = age;
+    // }
 
     public override string ToString()
     {

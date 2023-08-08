@@ -7,7 +7,7 @@ public sealed class Order
     public string _address; 
 
     public int ID { get; init; }
-    public string? Description { get; init; }
+    public string? Description { get; set; }
     public double Price {
         get => _price; 
         init => _price = value > 0 ? value : throw new ArgumentException("Price can't be lower than one");
@@ -34,7 +34,7 @@ public sealed class Order
                $"Description: {Description}\n" +
                $"Price: {Price}\n" + 
                $"Date: {Date}\n" + 
-               $"Delivery: {Delivery}" +
+               $"Delivery: {Delivery}\n" +
                $"Address: {Address}";
     }
 }
